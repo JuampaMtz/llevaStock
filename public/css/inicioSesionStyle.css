@@ -1,0 +1,19 @@
+.fondoRadial {
+    background-position: center center;
+    background: radial-gradient(ellipse, #black, #white);
+}
+
+.jorge {
+width:center;
+height:center;
+margin-top: 80px
+}
+.centrartxt {
+text-align:center;
+background: #85C1E
+}	
+
+.tamañoIconos{
+font-size: 32px;
+}
+
