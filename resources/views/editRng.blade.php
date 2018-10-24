@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Modificar remito</title>
+    <title>Modificar renglón</title>
 
     <script type="text/javascript" src="{{ asset('js\fontawesome-all.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js\bootstrap.min.js') }}"></script>  
