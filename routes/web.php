@@ -15,7 +15,6 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/proveedores', 'ProveedorController@prov')->name('proveedores');
 Route::get('/articulos', 'ArticuloController@art')->name('articulos');
 Route::get('/remitos', 'RemitoController@index')->name('remitos');
@@ -24,7 +23,6 @@ Route::get('/historialStock', 'HistorialStockController@index')->name('historial
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/pdfProveedores', 'ProveedorController@pdfGenerate')->name('pdfProveedores');
-
 
 
 Route::post('/articulos/{id}', 'ArticuloController@darDeBaja')->name('Articulo.darDeBaja');

@@ -52,6 +52,12 @@ class RenglonController extends Controller
         //
     }
 
+    public function viewRemito($id)
+    {
+      //  $dataRemito = Remito::find($id);
+      //  return redirect()->route('renglones',compact('dataRemito'));
+    }
+
     /**
      * Display the specified resource.
      *

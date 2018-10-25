@@ -32,7 +32,11 @@
                             <td>{{ $renglonesT -> cantidad }}</td>
                             <td>{{ $renglonesT -> costoIndividual }}</td>
                             <td>{{ $renglonesT -> remito_renglon -> fecha }}</td>
-                            <td style="text-decoration: underline; color: blue; cursor:pointer;" data-toggle="modal" data-target="#modalDatosRemito">{{ $renglonesT ->remito_renglon-> id }} - {{ $renglonesT ->remito_renglon-> nroRem }}</td>
+                            <td>
+                                    <a id="dataRem" style="text-decoration: underline; color: blue; cursor:pointer;" data-toggle="modal" data-target="#modalDatosRemito">
+                                        {{ $renglonesT ->remito_renglon-> id }} - {{ $renglonesT ->remito_renglon-> nroRem }}
+                                    </a>
+                            </td>
                             <td>
                                 <span style="cursor:default;">
                                 <!-- BOTON MODIFICAR -->
@@ -50,7 +54,6 @@
                                 </span>
                             </td>
                         </tr>
-
                         @endforeach
 
                 </table>  
@@ -106,7 +109,7 @@
         </div>  
     </div>  
 
-        <!-- MODAL DATOS DE REMITO-->
+    <!-- MODAL DATOS DE REMITO-->
     <div class="modal fade" id="modalDatosRemito" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -119,32 +122,31 @@
                 <div class="modal-body">
 
                     <label>Número</label>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                      value="{{ $renglonesT ->remito_renglon-> nroRem }}"  disabled>
+                    <input name="nroRem" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        disabled>
                     <br> 
                     <label>Precio Total</label>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                    <input name="precioTotal" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                      disabled>
                     <br> 
                     <label>Fecha</label>
-                    <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                    <input name="fecha" type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                         disabled>
                     <br>
                     <label>Proveedor</label>
-                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                    <input name="proveedor" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                         disabled>
                     <br>  
 
                 </div>
             </div>
         </div>  
-    </div> 
-
+    </div>
 
 
 
     <script type="text/javascript">
-        $(document).ready( function () {
+
         $('#articulosTable').DataTable({
             "language": 
     {
