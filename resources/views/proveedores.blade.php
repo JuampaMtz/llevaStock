@@ -4,7 +4,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">               
+        <div class="col-md-8 col-md-offset-2">  
+        <br>   
+            <a href="pdfProveedores">
+               <button class="btn-primary">Generar listado</button>
+           </a>          
             <br>         
                 <div class="panel panel-default">
                     <table  class="table table-hover table-striped table-condensed" id="articulosTable">

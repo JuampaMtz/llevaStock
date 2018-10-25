@@ -23,6 +23,16 @@ Route::get('/renglones', 'RenglonController@index')->name('renglones');
 Route::get('/historialStock', 'HistorialStockController@index')->name('historialStock');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('pdfProveedores', function() 
+{
+	$proveedores= App\Proveedor::all();
+	$pdf = PDF::loadView('pdfProveedores',['proveedores' => $proveedores]);
+	return $pdf-> download('Proveedores.pdf');
+
+});
+
+
+
 Route::post('/articulos/{id}', 'ArticuloController@darDeBaja')->name('Articulo.darDeBaja');
 Route::post('/proveedores/{id}', 'ProveedorController@darDeBaja')->name('Proveedor.darDeBaja');
 Route::post('/remitos/{id}', 'RemitoController@darDeBaja')->name('Remito.darDeBaja');
