@@ -25,14 +25,13 @@ class ArticuloController extends Controller
 
 
         $articulos = DB::select('SELECT articulos.*, 
-                      IFNULL ((SELECT SUM(stock.cantidad) 
+                        IFNULL ((SELECT SUM(stock.cantidad) 
                                      FROM stock 
                                      where stock.idArt=articulos.id),0)
                     -
                         IFNULL((SELECT SUM(ventas.cantidad) 
                                 FROM ventas 
                                 where ventas.idArt=articulos.id), 0)                     
-
 
                               AS stockFinal,
                               proveedores.nombre as proveedorNombre

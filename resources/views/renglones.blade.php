@@ -3,108 +3,144 @@
 @section('content')
 
 
-  
-
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">               
-            <br>         
-                <div class="panel panel-default">
-                    <table  class="table table-hover table-striped table-condensed" id="articulosTable">
-                        <thead>     
-                        <tr style="font-size:90%;">
-                            <th>ID</th>
-                            <th>Articulo</th>
-                            <th>Marca</th>
-                            <th>cantidad</th>
-                            <th>Costo renglón</th>
-                            <th>Fecha</th>
-                            <th>Remito</th>
-                            <th>Editar</th>
-                            <th>Eliminar</th>
-                        </tr>
-                        </thead>
-                           
-                            @foreach ($renglones as $renglonesT)
+        <div class="col-md-8 col-md-offset-2">          
+            <div class="panel panel-default">
+                <table  class="table table-hover table-striped table-condensed" id="articulosTable">
+                    <thead>     
+                    <tr style="font-size:90%;">
+                        <th>ID</th>
+                        <th>Articulo</th>
+                        <th>Marca</th>
+                        <th>cantidad</th>
+                        <th>Costo renglón</th>
+                        <th>Fecha</th>
+                        <th>Remito</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                       
+                        @foreach ($renglones as $renglonesT)
 
-                            <tr>
-                                <td>{{ $renglonesT -> id }}</td>
-                                <td>{{ $renglonesT -> articulo_renglon-> id }} - {{ $renglonesT -> articulo_renglon-> nombre }}</td>
-                                <td>{{ $renglonesT -> articulo_renglon-> marca }}</td>
-                                <td>{{ $renglonesT -> cantidad }}</td>
-                                <td>{{ $renglonesT -> costoIndividual }}</td>
-                                <td>{{ $renglonesT -> remito_renglon -> fecha }}</td>
-                                <td>{{ $renglonesT ->remito_renglon-> id }} - {{ $renglonesT ->remito_renglon-> nroRem }}</td>
-                                <td>
-                                    <span style="cursor:default;">
-                                    <!-- BOTON MODIFICAR -->
-                                        {{ Form::open(['route' => ['Renglon.edit', $renglonesT->id], 'method' => 'get']) }} 
-                                        <button type="submit" class="btn btn-outline" style="background:transparent; font-size:14px;" ><i class="fas fa-edit" style="cursor:pointer;"></i> </button>
-                                        {{ Form::close() }}
-                                     </span>
-                                </td>
-                                <td>
-                                    <span style="cursor:default;">      
-                                    <!-- BOTON ELIMINAR-->
-                                    {{ Form::open(['route' => ['Renglon.destroy', $renglonesT->id], 'method' => 'delete']) }}     
-                                        <button type="submit" class="btn btn-outline" style="background:transparent; font-size:14px;" ><i class="fas fa-trash-alt" style="cursor:pointer;"></i></button>
+                        <tr>
+                            <td>{{ $renglonesT -> id }}</td>
+                            <td>{{ $renglonesT -> articulo_renglon-> id }} - {{ $renglonesT -> articulo_renglon-> nombre }}</td>
+                            <td>{{ $renglonesT -> articulo_renglon-> marca }}</td>
+                            <td>{{ $renglonesT -> cantidad }}</td>
+                            <td>{{ $renglonesT -> costoIndividual }}</td>
+                            <td>{{ $renglonesT -> remito_renglon -> fecha }}</td>
+                            <td style="text-decoration: underline; color: blue; cursor:pointer;" data-toggle="modal" data-target="#modalDatosRemito">{{ $renglonesT ->remito_renglon-> id }} - {{ $renglonesT ->remito_renglon-> nroRem }}</td>
+                            <td>
+                                <span style="cursor:default;">
+                                <!-- BOTON MODIFICAR -->
+                                    {{ Form::open(['route' => ['Renglon.edit', $renglonesT->id], 'method' => 'get']) }} 
+                                    <button type="submit" class="btn btn-outline" style="background:transparent; font-size:14px;" ><i class="fas fa-edit" style="cursor:pointer;"></i> </button>
                                     {{ Form::close() }}
-                                    </span>
-                                </td>
-                            </tr>
+                                 </span>
+                            </td>
+                            <td>
+                                <span style="cursor:default;">      
+                                <!-- BOTON ELIMINAR-->
+                                {{ Form::open(['route' => ['Renglon.destroy', $renglonesT->id], 'method' => 'delete']) }}     
+                                    <button type="submit" class="btn btn-outline" style="background:transparent; font-size:14px;" ><i class="fas fa-trash-alt" style="cursor:pointer;"></i></button>
+                                {{ Form::close() }}
+                                </span>
+                            </td>
+                        </tr>
 
-                            @endforeach
+                        @endforeach
 
-                    </table>  
-                </div>  
+                </table>  
             </div>  
-                    
+        </div>                 
+        <div class="col-md-2">
+            <!--BOTON AGREGAR--> 
+            <button class="btn btn-success" data-toggle="modal" data-target="#ventanaAgregar">Agregar Renglón</button>
+        </div>        
+    </div>
+</div>
 
-                <!--BOTON AGREGAR-->                               
-                <div class="col-md-2"> 
-                    <button style="font-size: 40px;" class="btn btn-default" data-toggle="modal" data-target="#ventanaAgregar"><i class="far fa-plus-square"></i></button>
-                </div>          
-                                    <div class="modal fade" id="ventanaAgregar" tabindex="-1">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal">
-                                                    <span>&times;</span>
-                                                </button>
-                                                <h4 class="modal-title">REGISTRAR RENGLON</h4>
-                                            </div>
-                                            <div class="modal-body">
 
-                                                <form action="{{url('/insertarRenglon')}}" method="post" id="formulario_renglon">
-   
-                                                    <br>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fas fa-archive"></i></span>
-                                                        <input type="text" class="form-control" name="cantidad" placeholder="Cantidad" required>
-                                                    </div>  
-                                                    <br>
-                                                    <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
-                                                        <input type="text" class="form-control" type="number" min="0" max="999999999999999999" step="any" class="form-control" name="costoIndividual" placeholder="Costo del renglón" required>
-                                                    </div>  
-                                                    <br>
-                                                    <label for="categoria">Articulo:</label>
-                                                    {{Form::select('idArt',$articulos)}}  
-                                                    <br>
-                                                    <label for="categoria">Remito: </label>
-                                                    {{Form::select('idRem',$remitos)}}  
 
-                                                    <div class="modal-footer">
-                                                        <input type="submit" name="boton" class="btn btn-primary" value="Aceptar">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    </div>
-                                                </form> 
-                                            </div>
-                                        </div>
-                                </div>
-                        </div>   
-                    </div>
+    <!-- MODAL AGREGAR-->
+    <div class="modal fade" id="ventanaAgregar" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">REGISTRAR RENGLON</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{url('/insertarRenglon')}}" method="post" id="formulario_renglon">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-archive"></i></span>
+                            <input type="text" class="form-control" name="cantidad" placeholder="Cantidad" required>
+                        </div>  
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
+                            <input type="text" class="form-control" type="number" min="0" max="999999999999999999" step="any" class="form-control" name="costoIndividual" placeholder="Costo del renglón" required>
+                        </div>  
+                        <br>
+                        <label for="categoria">Articulo:</label>
+                        {{Form::select('idArt',$articulos)}}  
+                        <br>
+                        <label for="categoria">Remito: </label>
+                        {{Form::select('idRem',$remitos)}}  
+
+                        <div class="modal-footer">
+                            <input type="submit" name="boton" class="btn btn-primary" value="Aceptar">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div>
+
+                    </form> 
+                </div>
+            </div>
+        </div>  
+    </div>  
+
+        <!-- MODAL DATOS DE REMITO-->
+    <div class="modal fade" id="modalDatosRemito" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                    <h4 class="modal-title">INFORMACIÓN DE REMITO</h4>
+                </div>
+                <div class="modal-body">
+
+                    <label>Número</label>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      value="{{ $renglonesT ->remito_renglon-> nroRem }}"  disabled>
+                    <br> 
+                    <label>Precio Total</label>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                     disabled>
+                    <br> 
+                    <label>Fecha</label>
+                    <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        disabled>
+                    <br>
+                    <label>Proveedor</label>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        disabled>
+                    <br>  
+
+                </div>
+            </div>
+        </div>  
+    </div> 
+
+
 
 
     <script type="text/javascript">

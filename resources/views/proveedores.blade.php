@@ -4,12 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">  
-        <br>   
-            <a href="pdfProveedores">
-               <button class="btn-primary">Generar listado</button>
-           </a>          
-            <br>         
+        <div class="col-md-8 col-md-offset-2">          
                 <div class="panel panel-default">
                     <table  class="table table-hover table-striped table-condensed" id="articulosTable">
                         <thead>     
@@ -52,10 +47,18 @@
                     </table>    
                 </div>  
             </div>
-                <!--BOTON AGREGAR-->                                
-                <div class="col-md-2"> 
-                    <button style="font-size: 40px;" class="btn btn-default" data-toggle="modal" data-target="#ventanaAgregar"><i class="far fa-plus-square"></i></button>
-                </div>          
+
+            <div class="col-md-2">
+                <!--BOTON AGREGAR--> 
+                <button class="btn btn-success" data-toggle="modal" data-target="#ventanaAgregar">Agregar Proveedor</button>
+                <br>
+                <br>
+                <!--BOTON LISTADO PDF-->
+                <form action="{{ url('pdfProveedores') }}" name="form_pdfProveedores">
+                    <button type="submit" class="btn btn-primary">Generar listado</button>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                </form>                    
+            </div>          
                         <!-- MODAL AGREGAR-->
                         <div class="modal fade" id="ventanaAgregar" tabindex="-1">
                             <div class="modal-dialog">
@@ -70,22 +73,22 @@
                                         <form action="{{url('/insertarProveedor')}}" method="post" id="formulario_proveedor">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fas fa-user"></i></span>
-                                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
                                             </div>  
                                             <br>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fas fa-address-card"></i></span>
-                                                <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
+                                                <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción" required>
                                             </div>  
                                             <br>
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fas fa-phone"></i></span>
-                                                <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono">
+                                                <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Teléfono" required>
                                             </div>  
                                             <br>   
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fas fa-envelope"></i></span>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="E-Mail">
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="E-Mail" required>
                                             </div>        
                                             <div class="modal-footer">
                                                 <input type="submit" name="boton" class="btn btn-primary" value="Aceptar">

@@ -3,13 +3,9 @@
 @section('content')
 
 
-  
-
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">               
-            <br>         
+        <div class="col-md-8 col-md-offset-2">          
                 <div class="panel panel-default">
                     <table  class="table table-hover table-striped table-condensed" id="articulosTable">
                         <thead>     
@@ -62,11 +58,11 @@
                 </div>  
             </div>    
                     
-
-                <!--BOTON AGREGAR-->                               
-                <div class="col-md-2"> 
-                    <button style="font-size: 40px;" class="btn btn-default" data-toggle="modal" data-target="#ventanaAgregar"><i class="far fa-plus-square"></i></button>
-                </div>          
+            <div class="col-md-2">
+                <!--BOTON AGREGAR--> 
+                <button class="btn btn-success" data-toggle="modal" data-target="#ventanaAgregar">Agregar Articulo</button>
+            </div>        
+                                    <!-- MODAL AGREGAR-->
                                     <div class="modal fade" id="ventanaAgregar" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -96,7 +92,7 @@
                                                     <br>   
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
-                                                        <input type="number" min="0" max="999999999999999999" step="any" class="form-control" name="precio" placeholder="Precio"required>
+                                                        <input type="number" min="0" max="999999999999999999" step="any" class="form-control" name="precio" placeholder="Precio" required>
                                                     </div>  
                                                     <br>
                                                     <label for="categoria">Proveedor:</label>

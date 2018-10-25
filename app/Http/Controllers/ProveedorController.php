@@ -51,6 +51,14 @@ class ProveedorController extends Controller
         //
     }
 
+
+    public function pdfGenerate()
+    {
+    $proveedores= Proveedor::all();
+    $pdf = \PDF::loadView('pdfProveedores',['proveedores' => $proveedores]);
+    return $pdf-> download('Proveedores.pdf');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

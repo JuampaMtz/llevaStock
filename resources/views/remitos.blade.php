@@ -3,10 +3,9 @@
 @section('content')
 
 
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">               
-            <br>         
+        <div class="col-md-8 col-md-offset-2">          
                 <div class="panel panel-default">
                     <table  class="table table-hover table-striped table-condensed" id="articulosTable">
                         <thead>     
@@ -46,15 +45,15 @@
                                 </td>
                             </tr>
                             @endforeach
-
                     </table>  
                 </div>  
             </div>    
-                     
-                <!--BOTON AGREGAR-->                               
-                <div class="col-md-2"> 
-                    <button style="font-size: 40px;" class="btn btn-default" data-toggle="modal" data-target="#ventanaAgregar"><i class="far fa-plus-square"></i></button>
-                </div>          
+                    
+            <div class="col-md-2">
+                <!--BOTON AGREGAR--> 
+                <button class="btn btn-success" data-toggle="modal" data-target="#ventanaAgregar">Agregar Remito</button>
+            </div>        
+                                    <!-- MODAL AGREGAR-->
                                     <div class="modal fade" id="ventanaAgregar" tabindex="-1">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -69,12 +68,12 @@
                                                 <form action="{{url('/insertarRemito')}}" method="post" id="formulario_remito">
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="far fa-clipboard"></i></span>
-                                                        <input type="text" class="form-control" maxlength="50" name="nroRem" placeholder="Número de remito"required>
+                                                        <input type="text" class="form-control" maxlength="50" name="nroRem" placeholder="Número de remito" required>
                                                     </div>  
                                                     <br>
                                                     <div class="input-group">
                                                         <span class="input-group-addon"><i class="fas fa-dollar-sign"></i></span>
-                                                        <input type="number" min="0" max="999999999999999999" step="any" class="form-control" name="precioTotal" placeholder="Precio TOTAL"required>
+                                                        <input type="number" min="0" max="999999999999999999" step="any" class="form-control" name="precioTotal" placeholder="Precio TOTAL" required>
                                                     </div>  
                                                     <br>
                                                     <div class="input-group">

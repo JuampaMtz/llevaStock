@@ -16,14 +16,12 @@ class RenglonController extends Controller
     
     public function index()
     {
+        $datosRemito=Remito::all();
         $remitos=Remito::pluck('nroRem','id');
         $articulos=Articulo::pluck('nombre','id');
         $renglones=Stock::all();
-
-       // $joinARNG = Stock::with('articulo_renglon')->get();
-       // $joinRR = Stock::with('remito_renglon')->get();
         
-        return view('renglones',compact('articulos','remitos','renglones'));
+        return view('renglones',compact('articulos','datosRemito','remitos','renglones'));
     }
 
     /**
